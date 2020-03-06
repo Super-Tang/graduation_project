@@ -7,7 +7,7 @@ class Third_Window(object):
         Dialog.setObjectName('Dialog')
         Dialog.resize(300, 200)
         self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(20, 20, 200, 110))
+        self.label.setGeometry(QtCore.QRect(20, 20, 260, 110))
         self.label.setStyleSheet("color:red")
         self.label.setText('Error！ \n' + message)
         self.retranslateUi(Dialog)

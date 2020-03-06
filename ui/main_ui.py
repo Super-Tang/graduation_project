@@ -1,7 +1,11 @@
-import sys
 import os
-import ui.error as error
-import ui.fonts as f
+import sys
+
+from PyQt5 import QtCore, QtWidgets, QtGui
+from PyQt5.QtCore import QTimer
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
+
+import sentence_alignment.Chinese_Arabia as Chinese_Arabia
 import sentence_alignment.Chinese_English as Chinese_English
 import sentence_alignment.Chinese_French as Chinese_French
 import sentence_alignment.Chinese_German as Chinese_German
@@ -10,10 +14,14 @@ import sentence_alignment.Chinese_Korean as Chinese_Korean
 import sentence_alignment.Chinese_Portugal as Chinese_Portugal
 import sentence_alignment.Chinese_Russian as Chinese_Russian
 import sentence_alignment.Chinese_Spain as Chinese_Spain
-import sentence_alignment.Chinese_Arabia as Chinese_Arabia
 import sentence_alignment.Globals as Globals
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
-from PyQt5 import QtCore, QtWidgets, QtGui
+import ui.error as error
+import ui.fonts as f
+from phrase_alignment.palm.toolkit.configure import PDConfig
+from phrase_alignment.processfile import process_file
+from phrase_alignment.word_alignment import phrase_extract
+from ui.second_ui import Window
+from ui.wait import WaitWindow
 
 if hasattr(sys, 'frozen'):
     os.environ['PATH'] = sys._MEIPASS + ";" + os.environ['PATH']
@@ -42,19 +50,22 @@ class Main_UI(object):
         self.button_show = False
         self.max_table_row = 30
         self.initial_flag = True
+        self.aligned_phrase = None
+        self.phrase_alignment = None
 
-    def setupUi(self, QMainWindow):
+    def setupUi(self, QMainWindow, arg):
+        self.args = arg
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.extract)
         QMainWindow.setObjectName('MainWindow')
         QMainWindow.setFixedSize(self.width, self.height)
         self.add_status()
         self.frame = QtWidgets.QFrame()
+        self.frame.setStyleSheet('background-color:#E0E0E0')
         self.frame.setGeometry(QtCore.QRect(0, 120, self.width, self.height - 50))
         QMainWindow.setCentralWidget(self.frame)
         self.set_frame()
         self.add_button()
-        # self.frame1 = QtWidgets.QFrame()
-        # self.frame1.setGeometry(QtCore.QRect(0, 120, self.width, self.height - 50))
-        # self.frame1.setStyleSheet('background-color:blue')
         self.retranslateUi(QMainWindow)
         QtCore.QMetaObject.connectSlotsByName(QMainWindow)
         self.main_window = QMainWindow
@@ -73,7 +84,7 @@ class Main_UI(object):
         self.table.setRowHeight(0, 100)
         self.table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.table.setStyleSheet("selection-background-color:yellow")
-        width = (self.width - 132) / 2
+        width = (self.width - 132) // 2
         self.table.setColumnWidth(1, width)
         self.table.setColumnWidth(2, width)
         self.table.setStyleSheet("QTableWidget:item{border:4px black;}")
@@ -162,6 +173,12 @@ class Main_UI(object):
         down_act = QtWidgets.QAction(QtGui.QIcon('../icon/down.png'), 'Down', self)
         down_act.setShortcut('Ctrl+J')
         place_act6 = QtWidgets.QAction('下移', self)
+        extract_act = QtWidgets.QAction(QtGui.QIcon('../icon/extract.jpg'), 'Extract', self)
+        extract_act.setShortcut('Ctrl+E')
+        place_act7 = QtWidgets.QAction('提取术语', self)
+        exit_act = QtWidgets.QAction(QtGui.QIcon('../icon/exit.jpg'), 'Exit', self)
+        exit_act.setShortcut('Ctrl+E')
+        place_act8 = QtWidgets.QAction('退出', self)
         save_act.triggered.connect(self.save)
         place_act1.triggered.connect(self.save)
         align_act.triggered.connect(self.merge)
@@ -174,6 +191,10 @@ class Main_UI(object):
         place_act5.triggered.connect(self.up)
         down_act.triggered.connect(self.down)
         place_act6.triggered.connect(self.down)
+        extract_act.triggered.connect(self.extract)
+        place_act7.triggered.connect(self.extract)
+        exit_act.triggered.connect(self.exit)
+        place_act8.triggered.connect(self.exit)
         self.toolbar = self.addToolBar('Save')
         self.toolbar.addAction(save_act)
         self.toolbar.addAction(place_act1)
@@ -187,19 +208,29 @@ class Main_UI(object):
         self.toolbar.addAction(place_act5)
         self.toolbar.addAction(down_act)
         self.toolbar.addAction(place_act6)
+        self.toolbar.addAction(extract_act)
+        self.toolbar.addAction(place_act7)
+        self.toolbar.addAction(exit_act)
+        self.toolbar.addAction(place_act8)
+
+    def exit(self):
+        sys.exit(app.exec_())
 
     def save(self):
-        fileName2, ok2 = QFileDialog.getSaveFileName(self, "文件保存", self.initial, "All Files (*);;Text Files (*.txt)")
-        for i in range(self.table.rowCount() - 1):
-            index = int(self.table.item(i + 1, 0).text()) - 1
-            self.save_source_sentence[index] = str(self.table.item(i + 1, 1).text())
-            self.save_target_sentence[index] = str(self.table.item(i + 1, 2).text())
-        if len(fileName2) > 0:
+        fileName2, ok = QFileDialog.getSaveFileName(self, "文件保存", self.initial, "All Files (*);;Text Files (*.txt)")
+        if len(fileName2) > 0 and self.is_merged:
+            for i in range(self.table.rowCount() - 1):
+                index = int(self.table.item(i + 1, 0).text()) - 1
+                self.save_source_sentence[index] = str(self.table.item(i + 1, 1).text())
+                self.save_target_sentence[index] = str(self.table.item(i + 1, 2).text())
             f = open(fileName2, 'w', encoding='gbk')
             for i in range(len(self.save_source_sentence)):
                 f.write(self.save_source_sentence[i].strip() + '\n')
                 f.write(self.save_target_sentence[i].strip() + '\n')
             f.close()
+        else:
+            self.errors = error.ErrorWindow("请按照正确操作使用")
+            self.errors.show()
 
     def open_source(self):
         self.open(1)
@@ -208,7 +239,7 @@ class Main_UI(object):
         self.open(2)
 
     def fill_table(self, is_source, is_list=False):
-        self.table.setGeometry(QtCore.QRect(0, 0, self.width, self.height-250))
+        self.table.setGeometry(QtCore.QRect(0, 0, self.width, self.height-150))
         self.table.setStyleSheet("QWidget:hover{background-color:rgb(223,223,223);}")
         if self.initial_flag:
             self.current_source = self.current_target = 0
@@ -254,11 +285,11 @@ class Main_UI(object):
                 if self.table.rowCount() != count:
                     self.table.setRowCount(count+1)
                 if is_source:
-                    print(self.current_source)
+                    # print(self.current_source)
                     for i in range(count):
                         if i + self.current_source < self.source_count:
                             self.table.setItem(i+1, 0, QtWidgets.QTableWidgetItem(" " + str(i + 1 + self.current_source)))
-                            print(sentence[i+self.current_source])
+                            # print(sentence[i+self.current_source])
                             self.table.setItem(i+1, 1, QtWidgets.QTableWidgetItem(sentence[i+self.current_source].strip()))
                         else:
                             self.table.setItem(i + 1, 1, QtWidgets.QTableWidgetItem(""))
@@ -303,7 +334,7 @@ class Main_UI(object):
             self.merge_button1 = QtWidgets.QPushButton(self.frame)
             self.merge_button1.setText("文档对齐")
             self.merge_button1.setFont(f.font1)
-            self.merge_button1.setGeometry(QtCore.QRect(self.width // 2 - 120, self.height - 250, 150, 80))
+            self.merge_button1.setGeometry(QtCore.QRect(self.width // 2 - 120, self.height - 150, 150, 80))
             self.merge_button1.clicked.connect(self.merge)
             self.merge_button1.setStyleSheet('''QPushButton{border-radius:5px;color:black;}
                 QPushButton:hover{background:#87CEFF;}
@@ -312,7 +343,7 @@ class Main_UI(object):
             self.save_button1 = QtWidgets.QPushButton(self.frame)
             self.save_button1.setText('保存文件')
             self.save_button1.setFont(f.font1)
-            self.save_button1.setGeometry(QtCore.QRect(self.width // 2 + 70, self.height - 250, 150, 80))
+            self.save_button1.setGeometry(QtCore.QRect(self.width // 2 + 70, self.height - 150, 150, 80))
             self.save_button1.clicked.connect(self.save)
             self.save_button1.setVisible(True)
             self.save_button1.setStyleSheet('''QPushButton{border-radius:5px;color:black;}
@@ -320,13 +351,13 @@ class Main_UI(object):
                 QPushButton#left_button:hover{border-left:4px solid red;font-weight:700;}''')
             self.button_show = True
             left_button = QtWidgets.QPushButton(self.frame)
-            left_button.setGeometry(QtCore.QRect(self.width // 2 - 210, self.height - 235, 50, 50))
+            left_button.setGeometry(QtCore.QRect(self.width // 2 - 210, self.height - 135, 50, 50))
             left_button.setVisible(True)
             left_button.setStyleSheet("QPushButton{border-image: url(../icon/left_arrow.png)}QPushButton:hover{background:#87CEFF;}")
             left_button.setToolTip("上一页")
             left_button.clicked.connect(self.prev_page)
             right_button = QtWidgets.QPushButton(self.frame)
-            right_button.setGeometry(QtCore.QRect(self.width // 2 + 250, self.height - 235, 50, 50))
+            right_button.setGeometry(QtCore.QRect(self.width // 2 + 250, self.height - 135, 50, 50))
             right_button.setVisible(True)
             right_button.setStyleSheet("QPushButton{border-image: url(../icon/right_arrow.png)}QPushButton:hover{background:#87CEFF;}")
             right_button.setToolTip("下一页")
@@ -335,17 +366,23 @@ class Main_UI(object):
     def prev_page(self):
         index = int(self.table.item(1, 0).text()) - 1
         if self.is_merged:
-            # print(self.current_source)
-            # print(self.current_target)
-            if index >= self.max_table_row:
+            if index == 0:
+                self.current_source = self.current_target = 0
+            else:
                 self.current_source = self.current_target = index - self.max_table_row
-                self.fill_table(False, True)
+            self.fill_table(False, True)
         else:
-            if self.source_text is not None and index >= self.max_table_row:
-                self.current_source = index - self.max_table_row
+            if self.source_text is not None:
+                if index == 0:
+                    self.current_source = 0
+                else:
+                    self.current_source = index - self.max_table_row
                 self.fill_table(True)
-            if self.target_text is not None and index >= self.max_table_row:
-                self.current_target = index - self.max_table_row
+            if self.target_text is not None:
+                if index == 0:
+                    self.current_target = 0
+                else:
+                    self.current_target = index - self.max_table_row
                 self.fill_table(False)
         self.save_current_text()
 
@@ -353,8 +390,6 @@ class Main_UI(object):
         if self.is_merged:
             self.fill_table(False, True)
         else:
-            # print(self.current_source)
-            # print(self.current_target)
             if self.source_text is not None:
                 self.fill_table(True)
             if self.target_text is not None:
@@ -441,12 +476,28 @@ class Main_UI(object):
                 source_text = '\n'.join(self.source_text)
                 target_text = '\n'.join(self.target_text)
                 if source_language == Globals.ENGLISH:
+                    self.args.init_from_params = self.args.en_init_from_params
+                    self.args.src_vocab_fpath = self.args.en_src_vocab_fpath
+                    self.args.trg_vocab_fpath = self.args.en_trg_vocab_fpath
+                    self.args.bpe_model_dir = self.args.en_bpe_model_dir
                     save_content = Chinese_English.pip_line(source_text, target_text, False)
                 elif source_language == Globals.FRENCH:
+                    self.args.init_from_params = self.args.fr_init_from_params
+                    self.args.src_vocab_fpath = self.args.fr_src_vocab_fpath
+                    self.args.trg_vocab_fpath = self.args.fr_trg_vocab_fpath
+                    self.args.bpe_model_dir = self.args.fr_bpe_model_dir
                     save_content = Chinese_French.pip_line(source_text, target_text, False)
                 elif source_language == Globals.GERMAN:
+                    self.args.init_from_params = self.args.de_init_from_params
+                    self.args.src_vocab_fpath = self.args.de_src_vocab_fpath
+                    self.args.trg_vocab_fpath = self.args.de_trg_vocab_fpath
+                    self.args.bpe_model_dir = self.args.de_bpe_model_dir
                     save_content = Chinese_German.pip_line(source_text, target_text, False)
                 elif source_language == Globals.RUSSIAN:
+                    self.args.init_from_params = self.args.ru_init_from_params
+                    self.args.src_vocab_fpath = self.args.ru_src_vocab_fpath
+                    self.args.trg_vocab_fpath = self.args.ru_trg_vocab_fpath
+                    self.args.bpe_model_dir = self.args.ru_bpe_model_dir
                     save_content = Chinese_Russian.pip_line(source_text, target_text, False)
                 elif source_language == Globals.JAPAN:
                     save_content = Chinese_Japan.pip_line(source_text, target_text, False)
@@ -455,6 +506,10 @@ class Main_UI(object):
                 elif source_language == Globals.KOREAN:
                     save_content = Chinese_Korean.pip_line(source_text, target_text, False)
                 elif source_language == Globals.SPAIN:
+                    self.args.init_from_params = self.args.es_init_from_params
+                    self.args.src_vocab_fpath = self.args.es_src_vocab_fpath
+                    self.args.trg_vocab_fpath = self.args.es_trg_vocab_fpath
+                    self.args.bpe_model_dir = self.args.es_bpe_model_dir
                     save_content = Chinese_Spain.pip_line(source_text, target_text, False)
                 elif source_language == Globals.PORTUGAL:
                     save_content = Chinese_Portugal.pip_line(source_text, target_text, False)
@@ -474,6 +529,8 @@ class Main_UI(object):
         elif source_language == -1:
             self.errors = error.ErrorWindow("请选择语言")
             self.errors.show()
+        if self.phrase_alignment is None:
+            self.phrase_alignment = phrase_extract(source_language, self.args)
 
     def insert(self):
         index = 0
@@ -484,13 +541,16 @@ class Main_UI(object):
         if self.is_merged:
             self.save_source_sentence.insert(index, '')
             self.save_target_sentence.insert(index, '')
+            self.current_source = self.current_target = int(self.table.item(1, 0).text()) - 1
             self.fill_table(False, True)
         else:
             if self.source_text is not None and len(self.source_text) > 0:
                 self.source_text.insert(index, '')
+                self.current_source = int(self.table.item(1, 0).text()) - 1
                 self.fill_table(True)
             if self.target_text is not None and len(self.target_text) > 0:
                 self.target_text.insert(index, '')
+                self.current_target = int(self.table.item(1, 0).text()) - 1
                 self.fill_table(False)
 
     def delete(self):
@@ -503,13 +563,16 @@ class Main_UI(object):
             if self.is_merged:
                 self.save_source_sentence.remove(self.save_source_sentence[index])
                 self.save_target_sentence.remove(self.save_target_sentence[index])
+                self.current_source = self.current_target = int(self.table.item(1, 0).text()) - 1
                 self.fill_table(False, True)
             else:
                 if self.source_text is not None and len(self.source_text) > 0:
                     self.source_text.remove(self.source_text[index])
+                    self.current_source = int(self.table.item(1, 0).text()) - 1
                     self.fill_table(True)
                 if self.target_text is not None and len(self.target_text) > 0:
                     self.target_text.remove(self.target_text[index])
+                    self.current_target = int(self.table.item(1, 0).text()) - 1
                     self.fill_table(False)
         else:
             self.errors = error.ErrorWindow("请选择需要删除的行")
@@ -517,9 +580,9 @@ class Main_UI(object):
 
     def up(self):
         if len(self.table.selectedItems()) > 0:
-            select_row = self.table.selectedItems()[0].row()
-            if select_row > 0:
-                index = int(self.table.item(select_row, 0).text())
+            self.select_row = self.table.selectedItems()[0].row()
+            if self.select_row > 0:
+                index = int(self.table.item(self.select_row, 0).text())
             else:
                 index = 1
             if index > 1:
@@ -556,10 +619,10 @@ class Main_UI(object):
 
     def down(self):
         if len(self.table.selectedItems()) > 0:
-            select_row = self.table.selectedItems()[0].row()
+            self.select_row = self.table.selectedItems()[0].row()
             if self.is_merged:
-                if select_row > 0:
-                    index = int(self.table.item(select_row, 0).text())
+                if self.select_row > 0:
+                    index = int(self.table.item(self.select_row, 0).text())
                 else:
                     index = self.source_count
                 if index < self.source_count - 1:
@@ -577,8 +640,8 @@ class Main_UI(object):
                     self.prev_page()
             else:
                 if self.source_text is not None and len(self.source_text) > 0:
-                    if select_row > 0:
-                        index = int(self.table.item(select_row, 0).text())
+                    if self.select_row > 0:
+                        index = int(self.table.item(self.select_row, 0).text())
                     else:
                         index = self.source_count
                     if index <= self.source_count - 1:
@@ -590,8 +653,8 @@ class Main_UI(object):
                         self.source_text[down_row1] = select_source
                         self.prev_page()
                 if self.target_text is not None and len(self.target_text) > 0:
-                    if select_row > 0:
-                        index = int(self.table.item(select_row, 0).text())
+                    if self.select_row > 0:
+                        index = int(self.table.item(self.select_row, 0).text())
                     else:
                         index = self.target_count
                     if index <= self.target_count - 1:
@@ -603,18 +666,96 @@ class Main_UI(object):
                         self.target_text[down_row1] = select_target
                         self.prev_page()
 
+    def extract(self):
+        self.timer.start(1000)
+        if not self.is_merged:
+            self.errors = error.ErrorWindow("请先进行句子对齐操作")
+            self.errors.show()
+        else:
+            source_language = -1
+            text = self.source_lang.currentText().strip()
+            if text in languages.keys():
+                source_language = languages[text]
+            if self.aligned_phrase is None:
+                if source_language >= 0:
+                    self.save_current_text()
+                    process_file(self.save_source_sentence, self.save_target_sentence, source_language, self.args)
+                    self.main_window.statusBar().showMessage('Processing, please wait!')
+                    if not self.phrase_alignment.started:
+                        self.process_window = None
+                        self.phrase_alignment.start()
+                        self.aligned_phrase = self.phrase_alignment.values
+                        self.process_window = WaitWindow()
+                        self.process_window.show()
+                    else:
+                        if self.process_window is None:
+                            self.process_window = WaitWindow()
+                            self.process_window.show()
+            if len(self.aligned_phrase) > 0:
+                self.timer.stop()
+                if self.process_window:
+                    self.process_window.close()
+                self.main_window.statusBar().showMessage('Process finished!')
+                win = Window(text=self.aligned_phrase)
+                win.showMaximized()
+
     def retranslateUi(self, QMainWindow):
-        _translate = QtCore.QCoreApplication.translate
+        QMainWindow.setWindowFlags(QtCore.Qt.CustomizeWindowHint)
 
 
 class ParentWindow(QMainWindow, Main_UI):
-    def __init__(self, parent=None):
+    def __init__(self, arg, parent=None):
         super(ParentWindow, self).__init__(parent)
-        self.setupUi(self)
+        self.setupUi(self, arg)
+
+
+def default(args):
+    args.enable_ce = False
+    args.weight_sharing = True
+    args.postprocess_cmd = "da"
+    args.preprocess_cmd = "n"
+    args.relu_dropout = 0.1
+    args.attention_dropout = 0.1
+    args.prepostprocess_dropout = 0.1
+    args.n_layer = 6
+    args.n_head = 8
+    args.d_value = 64
+    args.d_key = 64
+    args.d_inner_hid = 2048
+    args.d_model = 512
+    args.max_length = 256
+    args.pad_idx = 3
+    args.unk_idx = 2
+    args.eos_idx = 1
+    args.bos_idx = 0
+    args.trg_vocab_size = 20000
+    args.src_vocab_size = 20000
+    args.n_best = 1
+    args.max_out_len = 257
+    args.beam_size = 5
+    args.label_smooth_eps = 0.1
+    args.warmup_steps = 8000
+    args.eps = 1e-9
+    args.beta2 = 0.997
+    args.beta1 = 0.9
+    args.learning_rate = 2.0
+    args.batch_size = 1
+    args.shuffle_batch = True
+    args.shuffle = True
+    args.sort_type = "pool"
+    args.pool_size = 200000
+    args.use_token_batch = True
+    args.token_delimiter = " "
+    args.special_token = ["<s>", "<e>", "<unk>"]
+    args.use_cuda = False
+    return args
 
 
 if __name__ == "__main__":
+    args = PDConfig(yaml_file="../phrase_alignment/transformer.yaml")
+    args.build()
+    args = default(args)
     app = QApplication(sys.argv)
-    win = ParentWindow()
+    win = ParentWindow(args)
     win.showMaximized()
     sys.exit(app.exec_())

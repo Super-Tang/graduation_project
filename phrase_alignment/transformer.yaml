@@ -1,0 +1,27 @@
+predict_file: 'C:/Users/Super-Tang/PycharmProjects/graduation/test.bpe'
+
+en_init_from_params: "C:/Users/Super-Tang/PycharmProjects/graduation/phrase_alignment/mt_models/en/model"
+en_src_vocab_fpath: "C:/Users/Super-Tang/PycharmProjects/graduation/phrase_alignment/mt_models/en/vocab_bpe.vocab"
+en_trg_vocab_fpath: "C:/Users/Super-Tang/PycharmProjects/graduation/phrase_alignment/mt_models/en/vocab_bpe.vocab"
+en_bpe_model_dir: 'C:/Users/Super-Tang/PycharmProjects/graduation/phrase_alignment/bpe_modes/bpe.model'
+
+fr_init_from_params: "C:/Users/Super-Tang/Desktop/fr/model"
+fr_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/fr/vocab_bpe.vocab"
+fr_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/fr/vocab_bpe.vocab"
+fr_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/fr/bpe.model'
+
+ru_init_from_params: "C:/Users/Super-Tang/Desktop/ru/model"
+ru_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/ru/vocab_bpe.vocab"
+ru_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/ru/vocab_bpe.vocab"
+ru_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/ru/bpe.model'
+
+es_init_from_params: "C:/Users/Super-Tang/Desktop/es/model"
+es_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/es/vocab_bpe.vocab"
+es_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/es/vocab_bpe.vocab"
+es_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/es/bpe.model'
+
+de_init_from_params: "C:/Users/Super-Tang/Desktop/de/model"
+de_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/de/vocab_bpe.vocab"
+de_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/de/vocab_bpe.vocab"
+de_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/de/bpe.model'
+

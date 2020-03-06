@@ -11,31 +11,66 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sentence_alignment/Globals.py">
+        <entry file="file://$PROJECT_DIR$/ui/main_ui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4731">
-              <caret line="249" column="4" selection-start-line="249" selection-start-column="4" selection-end-line="249" selection-end-column="24" />
+            <state relative-caret-position="227">
+              <caret line="512" column="90" lean-forward="true" selection-start-line="512" selection-start-column="90" selection-end-line="512" selection-end-column="90" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#2074#2643#0" />
+                <element signature="e#2678#6484#0" />
+                <element signature="e#6520#9498#0" />
+                <element signature="e#9579#10411#0" />
+                <element signature="e#10571#16129#0" />
+                <element signature="e#16165#18330#0" />
+                <element signature="e#18365#19834#0" />
+                <element signature="e#19869#20142#0" />
+                <element signature="e#20185#21032#0" />
+                <element signature="e#21066#22612#0" />
+                <element signature="e#22667#23295#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui/main_ui.py">
+        <entry file="file://$PROJECT_DIR$/phrase_alignment/palm/toolkit/configure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5035">
-              <caret line="313" column="46" lean-forward="true" selection-start-line="313" selection-start-column="46" selection-end-line="313" selection-end-column="46" />
+            <state relative-caret-position="346">
+              <caret line="302" selection-start-line="302" selection-end-line="302" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/phrase_alignment/processfile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#0#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/phrase_alignment/word_alignment.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="131" column="52" lean-forward="true" selection-start-line="131" selection-start-column="52" selection-end-line="131" selection-end-column="52" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/second_ui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-152">
-              <caret line="28" column="71" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
+            <state relative-caret-position="-2827">
+              <caret line="94" column="22" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -44,19 +79,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui/fonts.py">
+        <entry file="file://$PROJECT_DIR$/phrase_alignment/predict_thread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="232">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui/colors.py">
+        <entry file="file://$PROJECT_DIR$/phrase_alignment/transformer.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="23" lean-forward="true" selection-end-column="23" />
+            <state relative-caret-position="513">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -73,6 +111,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>font</find>
+      <find>print</find>
+      <find>start</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -96,21 +136,35 @@
         <option value="$PROJECT_DIR$/sentence_alignment/Chinese_Portugal.py" />
         <option value="$PROJECT_DIR$/sentence_alignment/Chinese_Russian.py" />
         <option value="$PROJECT_DIR$/ui/error_window.py" />
-        <option value="$PROJECT_DIR$/ui/error.py" />
         <option value="$PROJECT_DIR$/ui/source.txt" />
         <option value="$PROJECT_DIR$/ui/target.txt" />
-        <option value="$PROJECT_DIR$/ui/colors.py" />
+        <option value="$PROJECT_DIR$/save.txt" />
+        <option value="$PROJECT_DIR$/phrase_alignment/test.zh.bpe" />
+        <option value="$PROJECT_DIR$/phrase_alignment/reader.py" />
+        <option value="$PROJECT_DIR$/phrase_alignment/test.bpe" />
+        <option value="$PROJECT_DIR$/ui/error.py" />
+        <option value="$PROJECT_DIR$/sentence_alignment/Globals.py" />
+        <option value="$PROJECT_DIR$/ui/test.bpe" />
+        <option value="$PROJECT_DIR$/phrase_alignment/target_node.py" />
+        <option value="$PROJECT_DIR$/test.bpe" />
         <option value="$PROJECT_DIR$/ui/fonts.py" />
-        <option value="$PROJECT_DIR$/ui/main_ui.py" />
+        <option value="$PROJECT_DIR$/ui/colors.py" />
         <option value="$PROJECT_DIR$/ui/second_ui.py" />
+        <option value="$PROJECT_DIR$/ui/wait.py" />
+        <option value="$PROJECT_DIR$/phrase_alignment/predict_thread.py" />
+        <option value="$PROJECT_DIR$/phrase_alignment/transformer.py" />
+        <option value="$PROJECT_DIR$/phrase_alignment/processfile.py" />
+        <option value="$PROJECT_DIR$/ui/main_ui.py" />
+        <option value="$PROJECT_DIR$/phrase_alignment/transformer.yaml" />
+        <option value="$PROJECT_DIR$/phrase_alignment/word_alignment.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-14" />
-    <option name="y" value="-14" />
-    <option name="width" value="1393" />
-    <option name="height" value="1780" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-13" />
+    <option name="y" value="-13" />
+    <option name="width" value="1390" />
+    <option name="height" value="1766" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -127,7 +181,7 @@
             <path>
               <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
               <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="icon" type="462c0819:PsiDirectoryNode" />
+              <item name="phrase_alignment" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
@@ -148,19 +202,25 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ui" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/phrase_alignment" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Super-Tang\PycharmProjects\graduation\ui" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Super-Tang\PycharmProjects\graduation\phrase_alignment\mt_models\en" />
+      <recent name="C:\Users\Super-Tang\PycharmProjects\graduation\phrase_alignment" />
+      <recent name="C:\Users\Super-Tang\PycharmProjects\graduation\bpe_mode" />
       <recent name="C:\Users\Super-Tang\PycharmProjects\graduation\icon" />
       <recent name="C:\Users\Super-Tang\PycharmProjects\graduation\ui" />
-      <recent name="C:\Users\Super-Tang\PycharmProjects\graduation\setence_alignment" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Super-Tang\PycharmProjects\graduation\phrase_alignment" />
+      <recent name="C:\Users\Super-Tang\PycharmProjects\graduation\phrase_alignment\mt_models\en" />
+      <recent name="C:\Users\Super-Tang\PycharmProjects\graduation\phrase_alignment\mt_models" />
+      <recent name="C:\Users\Super-Tang\PycharmProjects\graduation" />
+      <recent name="C:\Users\Super-Tang\PycharmProjects\graduation\bpe_mode" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -175,7 +235,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.second_ui">
+  <component name="RunManager" selected="Python.main_ui">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="graduation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main_ui" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="graduation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -220,6 +302,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="processfile" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="graduation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/phrase_alignment" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/phrase_alignment/processfile.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="second_ui" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="graduation" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -242,10 +346,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="word_alignment" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="graduation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/phrase_alignment" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/phrase_alignment/word_alignment.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.second_ui" />
         <item itemvalue="Python.main_ui" />
+        <item itemvalue="Python.second_ui" />
+        <item itemvalue="Python.processfile" />
+        <item itemvalue="Python.word_alignment" />
         <item itemvalue="Python.prepro" />
       </list>
     </recent_temporary>
@@ -265,22 +393,27 @@
       <workItem from="1578545635813" duration="623000" />
       <workItem from="1579070641948" duration="26409000" />
       <workItem from="1580730194849" duration="18498000" />
+      <workItem from="1580988908114" duration="17167000" />
+      <workItem from="1582547433520" duration="23000" />
+      <workItem from="1582550205704" duration="2563000" />
+      <workItem from="1582636108303" duration="15182000" />
+      <workItem from="1583048464610" duration="33924000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84535000" />
+    <option name="totallyTimeSpent" value="153394000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1577" height="1016" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8857143" visible="true" weight="0.18564846" />
-      <window_info id="Structure" order="1" sideWeight="0.114285715" side_tool="true" visible="true" weight="0.18564846" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8" visible="true" weight="0.23370638" />
+      <window_info id="Structure" order="1" sideWeight="0.2" side_tool="true" visible="true" weight="0.23370638" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24858756" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3299435" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.18079096" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -289,8 +422,9 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3299435" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32655367" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3559322" />
+      <window_info anchor="right" x="0" y="0" width="344" height="816" id="Documentation" side_tool="true" visible="true" weight="0.09677419" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -306,16 +440,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/ui/main_ui.py</url>
-          <line>300</line>
+          <line>331</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/graduation$processfile.coverage" NAME="processfile Coverage Results" MODIFIED="1583050675637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/phrase_alignment" />
     <SUITE FILE_PATH="coverage/graduation$prepro.coverage" NAME="prepro Coverage Results" MODIFIED="1578049331114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/graduation$main_ui.coverage" NAME="main_ui Coverage Results" MODIFIED="1580877996540" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ui" />
-    <SUITE FILE_PATH="coverage/graduation$second_ui.coverage" NAME="second_ui Coverage Results" MODIFIED="1580967802507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ui" />
+    <SUITE FILE_PATH="coverage/graduation$word_alignment.coverage" NAME="word_alignment Coverage Results" MODIFIED="1582714747381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/phrase_alignment" />
+    <SUITE FILE_PATH="coverage/graduation$main_ui.coverage" NAME="main_ui Coverage Results" MODIFIED="1583396375321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ui" />
+    <SUITE FILE_PATH="coverage/graduation$second_ui.coverage" NAME="second_ui Coverage Results" MODIFIED="1583149073215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ui" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/sentence_alignment/Chinese_Arabia.py">
@@ -365,27 +501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/prepro.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="15" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/source.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/target.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="30" column="109" selection-start-line="30" selection-start-column="109" selection-end-line="30" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sentence_alignment/Chinese_Spain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -407,60 +522,272 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/error.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/bpe_mode/vocab_bpe.vocab" />
     <entry file="file://$PROJECT_DIR$/ui/save.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="18" lean-forward="true" selection-end-line="9" selection-end-column="18" />
+        <state relative-caret-position="399">
+          <caret line="21" column="32" lean-forward="true" selection-end-line="146" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/colors.py">
+    <entry file="file://$PROJECT_DIR$/prepro.py" />
+    <entry file="file://$PROJECT_DIR$/ui/word.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/_ce.py" />
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/palm/toolkit/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/desc.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/inference_model.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/test.zh.bpe">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="23" lean-forward="true" selection-end-column="23" />
+          <caret column="117" selection-start-column="117" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/paddle/fluid/framework.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="526" selection-start-line="526" selection-end-line="526" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/paddle/fluid/layers/nn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="1448" selection-start-line="1448" selection-end-line="1448" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/paddle/fluid/layer_helper_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="334" selection-start-line="334" selection-end-line="334" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/paddle/fluid/reader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7524">
+          <caret line="406" selection-start-line="406" selection-end-line="406" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/threading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17271">
+          <caret line="916" selection-start-line="916" selection-end-line="916" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/my_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3952">
+          <caret line="225" column="4" selection-start-line="225" selection-start-column="4" selection-end-line="225" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/palm/toolkit/input_field.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2565">
+          <caret line="145" column="63" selection-start-line="145" selection-start-column="63" selection-end-line="145" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/predict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3211">
+          <caret line="186" column="47" selection-start-line="186" selection-start-column="23" selection-end-line="186" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sentence_alignment/Globals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/reader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="352" selection-start-line="352" selection-end-line="352" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/target.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="30" column="109" selection-start-line="30" selection-start-column="109" selection-end-line="30" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/test.bpe">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/test.bpe">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-412">
+          <caret line="13" column="181" selection-start-line="13" selection-start-column="181" selection-end-line="13" selection-end-column="181" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/target_node.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/save1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="145" column="15" selection-start-line="145" selection-start-column="15" selection-end-line="145" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/source.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="19" column="50" lean-forward="true" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ui/fonts.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sentence_alignment/Globals.py">
+    <entry file="file://$PROJECT_DIR$/ui/colors.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4731">
-          <caret line="249" column="4" selection-start-line="249" selection-start-column="4" selection-end-line="249" selection-end-column="24" />
+        <state relative-caret-position="608">
+          <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/main_ui.py">
+    <entry file="file://$PROJECT_DIR$/ui/error.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5035">
-          <caret line="313" column="46" lean-forward="true" selection-start-line="313" selection-start-column="46" selection-end-line="313" selection-end-column="46" />
+        <state>
+          <caret selection-end-line="23" selection-end-column="35" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ui/second_ui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="28" column="71" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
+        <state relative-caret-position="-2827">
+          <caret line="94" column="22" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/wait.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/source_node.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/transformer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2756">
+          <caret line="979" selection-start-line="979" selection-end-line="979" />
+          <folding>
+            <element signature="e#611#640#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/palm/toolkit/configure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="302" selection-start-line="302" selection-end-line="302" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/processfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/main_ui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="512" column="90" lean-forward="true" selection-start-line="512" selection-start-column="90" selection-end-line="512" selection-end-column="90" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#2074#2643#0" />
+            <element signature="e#2678#6484#0" />
+            <element signature="e#6520#9498#0" />
+            <element signature="e#9579#10411#0" />
+            <element signature="e#10571#16129#0" />
+            <element signature="e#16165#18330#0" />
+            <element signature="e#18365#19834#0" />
+            <element signature="e#19869#20142#0" />
+            <element signature="e#20185#21032#0" />
+            <element signature="e#21066#22612#0" />
+            <element signature="e#22667#23295#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/predict_thread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.bpe">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/transformer.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phrase_alignment/word_alignment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="131" column="52" lean-forward="true" selection-start-line="131" selection-start-column="52" selection-end-line="131" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
