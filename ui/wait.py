@@ -9,6 +9,7 @@ class Fourth_Window(object):
         self.label.setGeometry(QtCore.QRect(20, 20, 260, 110))
         self.label.setStyleSheet("color:blue")
         self.label.setText('Processing, please wait!')
+        Dialog.setWindowTitle('Processing')
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
 

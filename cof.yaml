@@ -1,0 +1,80 @@
+# Save path of predict file.
+#    If you need to modify it, please change the path behind the colon to the real path.
+#    Do not modify the parameter on the left side of the colon!
+predict_file: 'C:/Users/Super-Tang/PycharmProjects/graduation/test.bpe'
+
+# The path of the English model.
+#    If you need to modify it, please change the path after the colon to the model path.
+#    Do not modify the parameter on the left of the colon!
+# xx_init_from_params: the location of the MT model, XX is the language number
+# xx_src_vocab_fpath: The location of the source language vocabulary needed by the MT model
+# xx_trg_vocab_fpath: The location of the target language vocabulary needed by the MT model, normally the same with src_vocab_path
+# xx_bpe_model_dir: The location of the model needed for BPE segmentation
+en_init_from_params: "C:/Users/Super-Tang/Desktop/MT_models/en/model"
+en_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/en/vocab_bpe.vocab"
+en_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/en/vocab_bpe.vocab"
+en_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/MT_models/en/bpe.model'
+
+# The path of the French model.
+#    If you need to modify it, please change the path after the colon to the model path.
+#    Do not modify the parameter on the left of the colon!
+fr_init_from_params: "C:/Users/Super-Tang/Desktop/MT_models/fr/model"
+fr_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/fr/vocab_bpe.vocab"
+fr_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/fr/vocab_bpe.vocab"
+fr_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/MT_models/fr/bpe.model'
+
+# The path of the Russian model.
+#    If you need to modify it, please change the path after the colon to the model path.
+#    Do not modify the parameter on the left of the colon!
+ru_init_from_params: "C:/Users/Super-Tang/Desktop/MT_models/ru/model"
+ru_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/ru/vocab_bpe.vocab"
+ru_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/ru/vocab_bpe.vocab"
+ru_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/MT_models/ru/bpe.model'
+
+# The path of the Spanish model.
+#    If you need to modify it, please change the path after the colon to the model path.
+#    Do not modify the parameter on the left of the colon!
+es_init_from_params: "C:/Users/Super-Tang/Desktop/MT_models/es/model"
+es_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/es/vocab_bpe.vocab"
+es_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/es/vocab_bpe.vocab"
+es_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/MT_models/es/bpe.model'
+
+# The path of the German model.
+#    If you need to modify it, please change the path after the colon to the model path.
+#    Do not modify the parameter on the left of the colon!
+de_init_from_params: "C:/Users/Super-Tang/Desktop/MT_models/de/model"
+de_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/de/vocab_bpe.vocab"
+de_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/de/vocab_bpe.vocab"
+de_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/MT_models/de/bpe.model'
+
+# The path of the Arabic model.
+#    If you need to modify it, please change the path after the colon to the model path.
+#    Do not modify the parameter on the left of the colon!
+ar_init_from_params: "C:/Users/Super-Tang/Desktop/MT_models/ar/model"
+ar_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/ar/vocab_bpe.vocab"
+ar_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/ar/vocab_bpe.vocab"
+ar_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/MT_models/ar/bpe.model'
+
+# The path of the Japanese model.
+#    If you need to modify it, please change the path after the colon to the model path.
+#    Do not modify the parameter on the left of the colon!
+jp_init_from_params: "C:/Users/Super-Tang/Desktop/MT_models/jp/model"
+jp_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/jp/vocab_bpe.vocab"
+jp_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/jp/vocab_bpe.vocab"
+jp_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/MT_models/jp/bpe.model'
+
+# The path of the Korean model.
+#    If you need to modify it, please change the path after the colon to the model path.
+#    Do not modify the parameter on the left of the colon!
+ko_init_from_params: "C:/Users/Super-Tang/Desktop/MT_models/ko/model"
+ko_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/ko/vocab_bpe.vocab"
+ko_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/ko/vocab_bpe.vocab"
+ko_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/MT_models/ko/bpe.model'
+
+# The path of the Portuguese model.
+#    If you need to modify it, please change the path after the colon to the model path.
+#    Do not modify the parameter on the left of the colon!
+pt_init_from_params: "C:/Users/Super-Tang/Desktop/MT_models/pt/model"
+pt_src_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/pt/vocab_bpe.vocab"
+pt_trg_vocab_fpath: "C:/Users/Super-Tang/Desktop/MT_models/pt/vocab_bpe.vocab"
+pt_bpe_model_dir: 'C:/Users/Super-Tang/Desktop/MT_models/pt/bpe.model'

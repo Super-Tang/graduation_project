@@ -1,14 +1,14 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QItemDelegate
-from PyQt5 import QtCore, QtWidgets, QtGui
-from ui.colors import color_list
+from PyQt5 import QtCore, QtWidgets
+from ui.colors import color_list1
 import ui.fonts as f
 
 
 class Second_UI(object):
     def __init__(self):
         self.initial = './'
-        self.colors = color_list
+        self.colors = color_list1
         desktop = QApplication.desktop()
         self.height = desktop.height()
         self.width = desktop.width()
@@ -83,14 +83,15 @@ class Second_UI(object):
                      ]
 
     def setup_ui(self, QMainWindow, text):
-        # print(text)
         if text is not None:
             self.text = text
         index = 0
         for line in self.text:
             if index % 2 == 0:
+                print(line)
                 self.source_text.append(line)
             else:
+                print(line)
                 self.target_text.append(line)
             index += 1
         QMainWindow.setObjectName('MainWindow')
@@ -101,53 +102,60 @@ class Second_UI(object):
         QMainWindow.setCentralWidget(self.frame)
         self.second_window = QMainWindow
         self.table = QtWidgets.QTableWidget(self.frame)
-        self.column_width = (self.width - 90) // self.max_table_column
-        self.table.setColumnCount(self.max_table_column + 1)
+        self.column_width = self.width - 100
+        self.table.setColumnCount(2)
         self.table.setShowGrid(False)
         self.table.setFixedHeight(self.height - 100)
-        # self.table.setItemDelegate(EmptyDelegate(self))
-        self.table.setFixedWidth(self.width)
+        self.table.setMinimumWidth(self.width)
         self.table.verticalHeader().setVisible(False)
         self.table.horizontalHeader().setVisible(False)
-        self.table.setFont(f.font3)
+        self.table.setFont(f.font)
         self.table.setColumnWidth(0, 50)
-        for i in range(self.max_table_column):
-            self.table.setColumnWidth(i+1, self.column_width)
+        self.table.setColumnWidth(1, self.column_width)
+        # for i in range(self.max_table_column):
+        #     self.table.setColumnWidth(i+1, self.column_width + 100)
         self.add_content()
         self.add_button()
         self.second_window.setWindowFlags(QtCore.Qt.CustomizeWindowHint)
 
     def add_sentence(self, row_index, sent):
-        if len(sent) <= self.max_table_column:
-            if row_index >= self.table.rowCount():
-                self.table.insertRow(row_index)
-            for j in range(self.max_table_column):
-                if j < len(sent):
-                    item = QtWidgets.QTableWidgetItem(sent[j][0])
-                    item.setForeground(
-                        QtGui.QBrush(self.colors[(sent[j][1] + 1) % self.max_table_row]))
-                    self.table.setItem(row_index, j + 1, item)
-                else:
-                    self.table.setItem(row_index, j + 1, QtWidgets.QTableWidgetItem(''))
-            row_index += 1
-        else:
-            sentence_len = len(sent)
-            piece_count = sentence_len % self.max_table_column
-            if piece_count != 0:
-                piece_count = (sentence_len // self.max_table_column + 1) * self.max_table_column
-            for j in range(piece_count):
+        if row_index >= self.table.rowCount():
+            self.table.insertRow(row_index)
+        hlayout = QtWidgets.QHBoxLayout()
+        width = 0
+        j = 0
+        for i in range(len(sent)):
+            label = QtWidgets.QLabel()
+            label.setFont(f.font2)
+            label.setText(sent[i][0].strip() + ' ')
+            label.setStyleSheet('QLabel{color:'+self.colors[(sent[i][1]+1) % self.max_table_row]+';}')
+            label.adjustSize()
+            width += label.width()
+            if width < self.column_width - 180:
+                j += 1
+                hlayout.addWidget(label)
+            else:
+                j = 1
+                width = 0
+                widget = QtWidgets.QWidget()
+                widget.setLayout(hlayout)
+                self.table.setCellWidget(row_index, 1, widget)
+                row_index += 1
                 if row_index >= self.table.rowCount():
                     self.table.insertRow(row_index)
-                column_index = j % self.max_table_column + 1
-                if j < sentence_len:
-                    item = QtWidgets.QTableWidgetItem(sent[j][0])
-                    item.setForeground(
-                        QtGui.QBrush(self.colors[(sent[j][1] + 1) % self.max_table_row]))
-                    self.table.setItem(row_index, column_index, item)
-                else:
-                    self.table.setItem(row_index, column_index, QtWidgets.QTableWidgetItem(''))
-                if column_index == self.max_table_column:
-                    row_index += 1
+                hlayout = QtWidgets.QHBoxLayout()
+                hlayout.addWidget(label)
+        while j < 20:
+            label = QtWidgets.QLabel()
+            label.setFont(f.font1)
+            label.setText('             ')
+            j += 1
+            hlayout.addWidget(label, alignment=QtCore.Qt.AlignLeft)
+        # vlayout.addWidget(widget1)
+        widget = QtWidgets.QWidget()
+        widget.setLayout(hlayout)
+        self.table.setCellWidget(row_index, 1, widget)
+        row_index += 1
         return row_index
 
     def add_content(self):
@@ -155,17 +163,21 @@ class Second_UI(object):
         if count <= self.max_table_row:
             if count != self.table.rowCount():
                 self.table.setRowCount(count)
-            self.table.setColumnCount(self.max_table_column + 1)
             row_index = 0
             for i in range(count):
                 if row_index >= self.table.rowCount():
                     self.table.insertRow(row_index)
                 self.table.setItem(row_index, 0, QtWidgets.QTableWidgetItem(str(i+self.current_row+1)))
                 row_index = self.add_sentence(row_index, self.source_text[i + self.current_row])
+                if row_index >= self.table.rowCount():
+                    self.table.insertRow(row_index)
                 row_index = self.add_sentence(row_index, self.target_text[i + self.current_row])
+                if row_index >= self.table.rowCount():
+                    self.table.insertRow(row_index)
+                row_index += 1
         else:
             self.table.setRowCount(self.max_table_row)
-            self.table.setColumnCount(self.max_table_column + 1)
+            # self.table.setColumnCount(self.max_table_column + 1)
             self.table.setColumnWidth(0, 50)
             row_index = 0
             for i in range(self.max_table_row):
@@ -173,7 +185,12 @@ class Second_UI(object):
                     self.table.insertRow(row_index)
                 self.table.setItem(row_index, 0, QtWidgets.QTableWidgetItem(str(i + self.current_row + 1)))
                 row_index = self.add_sentence(row_index, self.source_text[i + self.current_row])
+                if row_index >= self.table.rowCount():
+                    self.table.insertRow(row_index)
                 row_index = self.add_sentence(row_index, self.target_text[i + self.current_row])
+                if row_index >= self.table.rowCount():
+                    self.table.insertRow(row_index)
+                row_index += 1
             self.current_row += self.max_table_row
         self.table.resizeRowsToContents()
 
@@ -182,14 +199,14 @@ class Second_UI(object):
         left_button.setGeometry(QtCore.QRect(self.width // 2 - 150, self.height - 75, 50, 50))
         left_button.setVisible(True)
         left_button.setStyleSheet(
-            "QPushButton{border-image: url(../icon/left_arrow.png)}QPushButton:hover{background:#87CEFF;}")
+            "QPushButton{border-image: url(icon/left_arrow.png)}QPushButton:hover{background:#87CEFF;}")
         left_button.setToolTip("上一页")
         left_button.clicked.connect(self.prev_page)
         right_button = QtWidgets.QPushButton(self.frame)
         right_button.setGeometry(QtCore.QRect(self.width // 2 + 245, self.height - 75, 50, 50))
         right_button.setVisible(True)
         right_button.setStyleSheet(
-            "QPushButton{border-image: url(../icon/right_arrow.png)}QPushButton:hover{background:#87CEFF;}")
+            "QPushButton{border-image: url(icon/right_arrow.png)}QPushButton:hover{background:#87CEFF;}")
         right_button.setToolTip("下一页")
         right_button.clicked.connect(self.next_page)
         save_button = QtWidgets.QPushButton(self.frame)
@@ -216,8 +233,8 @@ class Second_UI(object):
 
     def prev_page(self):
         index = int(self.table.item(0, 0).text()) - 1
-        self.table.setRowCount(1)
         if index > 0:
+            self.table.setRowCount(1)
             self.current_row = index - self.max_table_row
             self.add_content()
 
@@ -230,7 +247,7 @@ class Second_UI(object):
     def save(self):
         fileName2, ok2 = QFileDialog.getSaveFileName(self, "文件保存", self.initial, "All Files (*);;Text Files (*.txt)")
         if len(fileName2) > 0:
-            f = open(fileName2, 'w', encoding='gbk')
+            f = open(fileName2, 'w', encoding='utf-8')
             count = len(self.source_text)
             for i in range(count):
                 source = self.source_text[i]
